@@ -1,21 +1,20 @@
 import { useEffect, useState } from "react";
 import { mmoConnections} from "../../services"
 import {CardNews} from "../CardNews"
-import styled from 'styled-components';
 
 export const ListaNews = () => {
 
     const [listaNews, setlistaNews] = useState([]);
     const [listaNewsFiltrada, setlistaNewsFiltrada] = useState([]);
-    async function fetchMMOConnections (){
-        let result = await mmoConnections("latestnews")
-        setlistaNews(result)
-        setlistaNewsFiltrada(result)
-    }
-     useEffect(() => {
-        fetchMMOConnections()
-    }, []);
-    
+   
+    useEffect(async () => {
+        let temp =  await mmoConnections(`latestnews`)
+        setlistaNews(temp)
+        setlistaNewsFiltrada(temp)
+       
+    }, []); 
+
+
     const filtraNews = (e) => {
         let textoDigitado = e.target.value
 
@@ -34,7 +33,7 @@ export const ListaNews = () => {
         <>
             <h1>Lista de Noticias</h1>
             <input placeholder={'Digite Aqui'} onChange={e=>filtraNews(e)}></input>
-            {listaNewsFiltrada.map((e,i)=>
+            {listaNews?listaNewsFiltrada.map((e,i)=>
               
               i<10?(
                     <>
@@ -42,9 +41,7 @@ export const ListaNews = () => {
                         <hr />
                     </>
                 ):''
-               
-            
-            )}
+            ):<p>Carregando</p>}
         </>
     );
 }
