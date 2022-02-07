@@ -28,6 +28,7 @@ export const ContainerMiniaturas = styled.div`
         justify-content: center;
 `;
 export const ImgMiniatura = styled.img`
+        width: 150px;
         margin-left: 5px;
         padding: 1px;
         &:hover {
@@ -64,7 +65,7 @@ export const MeuDD = styled.dd`
        
     `;
 export const Descri = styled.p`
-    
+font-family: 'Montserrat', sans-serif;
     `;
     export const DivDtDd = styled.div`
         display: flexbox;

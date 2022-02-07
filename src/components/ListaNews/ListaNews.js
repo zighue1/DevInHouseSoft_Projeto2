@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { mmoConnections} from "../../services"
 import {CardNews} from "../CardNews"
+import styled from 'styled-components';
 
 export const ListaNews = () => {
 
@@ -28,10 +29,16 @@ export const ListaNews = () => {
         setlistaNewsFiltrada(listateste)
         console.log(listaNewsFiltrada)
     }
+
+    const MeuH1 = styled.h1`
+        margin-top: 10px
+        font-family: 'Montserrat', sans-serif;
+        display: block;
+    `
   
     return (
         <>
-            <h1>Lista de Noticias</h1>
+            <MeuH1>Lista de Noticias</MeuH1>
             <input placeholder={'Digite Aqui'} onChange={e=>filtraNews(e)}></input>
             {listaNews?listaNewsFiltrada.map((e,i)=>
               
